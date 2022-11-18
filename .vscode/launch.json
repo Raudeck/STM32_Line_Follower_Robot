@@ -1,0 +1,20 @@
+{
+    "configurations": [
+    {
+        "cwd": "${workspaceRoot}",
+        "executable": "./build/Little_Car.elf",
+        "name": "Debug with OpenOCD",
+        "request": "launch",
+        "type": "cortex-debug",
+        "preLaunchTask": "Build",
+        "servertype": "openocd",
+        "configFiles": [
+            "interface/stlink.cfg",
+            "target/stm32f1x.cfg"
+        ],
+        "searchDir": [],
+        "runToEntryPoint": "main",
+        "showDevDebugOutput": "none"
+    }
+    ]
+}
