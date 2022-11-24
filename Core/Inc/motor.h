@@ -3,13 +3,6 @@
 
 #include "main.h"
 
-float kp = 0.002;
-float ki = 0.001;
-float kd = 15;
-
-const uint8_t sensor_left_normal = 0;
-const uint8_t sensor_right_normal = 0;
-const uint8_t sensor_mid_normal = 0;
-
+void motor_control(size_t left_motor_speed, size_t right_motor_speed);
 
 #endif
