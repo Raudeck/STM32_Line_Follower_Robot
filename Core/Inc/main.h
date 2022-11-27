@@ -65,6 +65,10 @@ extern TIM_HandleTypeDef htim3;
 #define SENSOR_MID_GPIO_Port GPIOA
 #define SENSOR_LEFT_Pin GPIO_PIN_5
 #define SENSOR_LEFT_GPIO_Port GPIOA
+#define SENSOR_LEFTMOST_Pin GPIO_PIN_10
+#define SENSOR_LEFTMOST_GPIO_Port GPIOB
+#define SENSOR_RIGHTMOST_Pin GPIO_PIN_11
+#define SENSOR_RIGHTMOST_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

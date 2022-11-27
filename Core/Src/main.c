@@ -71,8 +71,6 @@ int _write(int file, char *ptr, int len)
   * @retval int
   */
 int main(void)
-
-
 {
   /* USER CODE BEGIN 1 */
   /* USER CODE END 1 */
@@ -109,10 +107,14 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    printf("RIGHT %d, MID %d, LEFT: %d\r\n", 
+    /* Denote: if the indicator light is off, then the output*/
+    /* pin return high level */
+    printf("RIGHTMOST: %d, RIGHT %d, MID %d, LEFT: %d, LEFT_MOST: %d\r\n", 
+      HAL_GPIO_ReadPin(SENSOR_RIGHTMOST_GPIO_Port, SENSOR_RIGHTMOST_Pin),
       HAL_GPIO_ReadPin(SENSOR_RIGHT_GPIO_Port, SENSOR_RIGHT_Pin), 
       HAL_GPIO_ReadPin(SENSOR_MID_GPIO_Port, SENSOR_MID_Pin),
-      HAL_GPIO_ReadPin(SENSOR_LEFT_GPIO_Port, SENSOR_LEFT_Pin));
+      HAL_GPIO_ReadPin(SENSOR_LEFT_GPIO_Port, SENSOR_LEFT_Pin),
+      HAL_GPIO_ReadPin(SENSOR_LEFTMOST_GPIO_Port, SENSOR_LEFTMOST_Pin));
     PID_Handle();
     motor_control(left_speed, right_speed);
   }
@@ -282,6 +284,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : SENSOR_LEFTMOST_Pin SENSOR_RIGHTMOST_Pin */
+  GPIO_InitStruct.Pin = SENSOR_LEFTMOST_Pin|SENSOR_RIGHTMOST_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 }
