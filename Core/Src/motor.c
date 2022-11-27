@@ -66,7 +66,7 @@ void motor_control(double left_motor_speed, double right_motor_speed)
 
 void PID_Handle()
 {
-    size_t sensor_array[3];
+    size_t sensor_array[5];
     int error = 0;
     int init_left_motor_speed = 50;
     int init_right_motor_speed = 50;
