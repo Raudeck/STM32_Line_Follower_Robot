@@ -6,6 +6,19 @@
             "type": "shell",
             "command": "make -j7",
             "problemMatcher": []
+        },
+        {
+            "label": "flash",
+            "type": "shell",
+            "command": "openocd",
+            "args": [
+                "-f interface/stlink.cfg",
+                "-f target/stm32f1x.cfg",
+                "-c init",
+                " -c \"flash write_image erase Little_Car.bin 0x08000000\"",
+                "-c \"reset\"",
+                "-c shutdown"
+            ]
         }
     ]
 }

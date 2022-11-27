@@ -59,6 +59,12 @@ extern TIM_HandleTypeDef htim3;
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define SENSOR_RIGHT_Pin GPIO_PIN_2
+#define SENSOR_RIGHT_GPIO_Port GPIOA
+#define SENSOR_MID_Pin GPIO_PIN_3
+#define SENSOR_MID_GPIO_Port GPIOA
+#define SENSOR_LEFT_Pin GPIO_PIN_5
+#define SENSOR_LEFT_GPIO_Port GPIOA
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
