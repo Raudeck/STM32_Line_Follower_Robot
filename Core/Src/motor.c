@@ -1,9 +1,9 @@
 #include "motor.h"
 #include <stdlib.h>
 
-double kp = 50;
-double ki = 0;
-double kd = 0.0;
+double kp = 6.375;
+double ki = 0.125;
+double kd = 6.25;
 double left_speed = 10;
 double right_speed = 10;
 double integral = 0;
@@ -64,12 +64,25 @@ void motor_control(double left_motor_speed, double right_motor_speed)
     left_motor_counterclockwise();
 }
 
+void sharp_turn(enum SharpTurn position)
+{
+    switch(position)
+    {
+        case left:
+            motor_control(20, 0);
+        break;
+        case right:
+            motor_control(0, 20);
+        break;
+    }
+}
+
 void PID_Handle()
 {
     size_t sensor_array[5];
     int error = 0;
-    int init_left_motor_speed = 50;
-    int init_right_motor_speed = 50;
+    double init_left_motor_speed = 65;
+    double init_right_motor_speed = 65;
     int proportional = 0;
 
     /* Read sensors */
@@ -79,6 +92,12 @@ void PID_Handle()
     sensor_array[3] = HAL_GPIO_ReadPin(SENSOR_RIGHT_GPIO_Port, SENSOR_RIGHT_Pin);
     sensor_array[4] = HAL_GPIO_ReadPin(SENSOR_RIGHTMOST_GPIO_Port, SENSOR_RIGHTMOST_Pin);
 
+    if (sensor_array[0] == 1 && sensor_array[1] == 1 && sensor_array[2] == 1
+        && sensor_array[3] == 0 && sensor_array[4] == 0)
+        sharp_turn(right);
+    if (sensor_array[0] == 1 && sensor_array[1] == 1 && sensor_array[2] == 1
+        && sensor_array[3] == 1 && sensor_array[4] == 0)
+        sharp_turn(right);
     /* Calc errors */
     if (sensor_array[0] == 0 && sensor_array[1] == 0 && sensor_array[2] == 0
         && sensor_array[3] == 0 && sensor_array[4] == 1)
@@ -107,6 +126,7 @@ void PID_Handle()
     if (sensor_array[0] == 1 && sensor_array[1] == 0 && sensor_array[2] == 0
         && sensor_array[3] == 0 && sensor_array[4] == 0)
         error = -4;
+    
     
     /* PID */
     proportional = error;
