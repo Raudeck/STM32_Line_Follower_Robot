@@ -109,14 +109,15 @@ int main(void)
     /* USER CODE BEGIN 3 */
     /* Denote: if the indicator light is off, then the output*/
     /* pin return high level */
-    printf("RIGHTMOST: %d, RIGHT %d, MID %d, LEFT: %d, LEFT_MOST: %d\r\n", 
+    /*    printf("RIGHTMOST: %d, RIGHT %d, MID %d, LEFT: %d, LEFT_MOST: %d\r\n", 
       HAL_GPIO_ReadPin(SENSOR_RIGHTMOST_GPIO_Port, SENSOR_RIGHTMOST_Pin),
       HAL_GPIO_ReadPin(SENSOR_RIGHT_GPIO_Port, SENSOR_RIGHT_Pin), 
       HAL_GPIO_ReadPin(SENSOR_MID_GPIO_Port, SENSOR_MID_Pin),
       HAL_GPIO_ReadPin(SENSOR_LEFT_GPIO_Port, SENSOR_LEFT_Pin),
       HAL_GPIO_ReadPin(SENSOR_LEFTMOST_GPIO_Port, SENSOR_LEFTMOST_Pin));
+      */
     PID_Handle();
-    motor_control(left_speed, right_speed);
+    //motor_control(100, 0);
   }
   /* USER CODE END 3 */
 }
