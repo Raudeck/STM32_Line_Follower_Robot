@@ -56,6 +56,7 @@ void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
 extern TIM_HandleTypeDef htim3;
+extern TIM_HandleTypeDef htim1;
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
@@ -69,6 +70,8 @@ extern TIM_HandleTypeDef htim3;
 #define SENSOR_LEFTMOST_GPIO_Port GPIOB
 #define SENSOR_RIGHTMOST_Pin GPIO_PIN_11
 #define SENSOR_RIGHTMOST_GPIO_Port GPIOB
+#define BUZZER_Pin GPIO_PIN_14
+#define BUZZER_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
