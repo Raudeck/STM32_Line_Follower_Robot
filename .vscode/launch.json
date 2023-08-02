@@ -1,6 +1,17 @@
 {
     "configurations": [
     {
+        "cwd": "${workspaceFolder}",
+        "executable": "./bin/executable.elf",
+        "name": "Debug with JLink",
+        "request": "launch",
+        "type": "cortex-debug",
+        "device": "",
+        "runToEntryPoint": "main",
+        "showDevDebugOutput": "none",
+        "servertype": "jlink"
+    },
+    {
         "cwd": "${workspaceRoot}",
         "executable": "./build/Little_Car.elf",
         "name": "Debug with OpenOCD",
